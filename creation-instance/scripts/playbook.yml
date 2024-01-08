@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
-  become: true
-  roles:
-    - role: nginxinc.nginx
+  tasks:
+    - name: install nginx
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
